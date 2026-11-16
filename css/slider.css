@@ -9,3 +9,17 @@ button {
   margin: 0 auto;
   padding: 10px 0;
 }
+
+#slider {
+  width: 350px;
+  height: 350px;
+  margin: 0 auto;
+}
+
+#slider img {
+  border-radius: 20px;
+  transform: rotate(-4deg);
+  padding: 5px;
+  background-color: silver;
+  margin: 10px 0;
+}
