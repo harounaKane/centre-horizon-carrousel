@@ -26,6 +26,7 @@ const images = [
 ];
 
 let index = 0;
+let idInterval = null;
 /*************************************************************************************************/
 /* ***************************************** FONCTIONS ***************************************** */
 /*************************************************************************************************/
@@ -34,6 +35,25 @@ function avancer() {
   index++;
   if (index == images.length) index = 0;
   refresh();
+}
+
+function reculer() {
+  index--;
+  if (index < 0) index = images.length - 1;
+  refresh();
+}
+
+function play() {
+  $("#slider-toggle i").classList.toggle("fa-play");
+  $("#slider-toggle i").classList.toggle("fa-pause");
+
+  if (idInterval !== null) {
+    clearInterval(idInterval);
+    idInterval = null;
+    return;
+  }
+
+  idInterval = setInterval(avancer, 1000);
 }
 
 function refresh() {
@@ -53,13 +73,9 @@ toolbarToggle.addEventListener("click", () => {
 
 next.addEventListener("click", avancer);
 
-previous.addEventListener("click", () => {
-  console.log("previous");
-});
+previous.addEventListener("click", reculer);
 
-toggle.addEventListener("click", () => {
-  console.log("toggle");
-});
+toggle.addEventListener("click", play);
 
 random.addEventListener("click", () => {
   console.log("random");
